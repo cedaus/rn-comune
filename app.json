@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "RNtest",
-    "slug": "RNtest",
+    "name": "rn-comune",
+    "slug": "rn-comune",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

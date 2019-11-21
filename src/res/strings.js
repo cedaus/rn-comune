@@ -6,6 +6,9 @@ const strings = {
     heading: 'Nice to see you',
     button: 'Login'
   },
+  home: {
+    heading: 'Comune',
+  },
   onboarding: {
     welcome: {
       heading: 'Welcome',

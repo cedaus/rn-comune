@@ -3,6 +3,7 @@ import {Image, Text, TextInput, TouchableHighlight, TouchableOpacity, View} from
 import Icon from "react-native-vector-icons/Ionicons";
 import styles from 'res/styles';
 import colors from 'res/colors';
+import strings from 'res/strings';
 import chats_styles from 'styles/chatsStyles.js'
 
 export const InputText = (props) => {
@@ -410,7 +411,7 @@ export const Hero = (props) => {
       paddingRight: 20
     }}>
       <View style={{flex: 0.8}}>
-        <Text style={{fontSize: 24, color: '#FFF', fontWeight: 'bold'}}>RemoteSocial</Text>
+        <Text style={{fontSize: 24, color: '#FFF', fontWeight: 'bold'}}>{strings.home.heading}</Text>
         <Text style={{fontSize: 14, color: colors.textLight2}}>You are in HSR Layout, Bengaluru</Text>
       </View>
       <View style={{flex: 0.2}}>

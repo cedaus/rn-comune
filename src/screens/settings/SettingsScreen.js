@@ -3,7 +3,6 @@ import {Image, Text, View} from 'react-native';
 import styles from 'res/styles';
 import colors from 'res/colors';
 import {CustomButton, InputOTP, InputText, TextButton, TextIconButton} from "library/utils";
-import {T1} from 'library/text';
 import {CrossTab} from "library/tab";
 
 
@@ -20,26 +19,26 @@ export default class SettingsScreen extends Component {
         </View>
         <View>
           <View style={[styles.settingsItem]}>
-            <T1 text='Birthday'/>
-            <Text>24/03/1994</Text>
+            <Text style={[styles.h5, {fontWeight: 'bold'}]}>Birthday</Text>
+            <Text style={styles.p}>24/03/1994</Text>
           </View>
           <View style={[styles.settingsItem]}>
-            <T1 text='Gender'/>
-            <Text>Male</Text>
+            <Text style={[styles.h5, {fontWeight: 'bold'}]}>Gender</Text>
+            <Text style={styles.p}>Male</Text>
           </View>
           <View style={[styles.settingsItem]}>
-            <T1 text='City'/>
-            <Text>Bengaluru, India</Text>
+            <Text style={[styles.h5, {fontWeight: 'bold'}]}>Location</Text>
+            <Text style={styles.p}>Bengaluru, India</Text>
           </View>
         </View>
         <View>
           <View style={[styles.settingsItem]}>
-            <T1 text='Phone'/>
-            <Text>(+91)9810626853</Text>
+            <Text style={[styles.h5, {fontWeight: 'bold'}]}>Phone</Text>
+            <Text style={styles.p}>(+91)9810626853</Text>
           </View>
           <View style={[styles.settingsItem]}>
-            <T1 text='Email'/>
-            <Text>cedaus97@gmail.com</Text>
+            <Text style={[styles.h5, {fontWeight: 'bold'}]}>Email</Text>
+            <Text style={styles.p}>cedaus97@gmail.com</Text>
           </View>
         </View>
         <View

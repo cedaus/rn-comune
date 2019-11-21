@@ -16,7 +16,8 @@ import {
   FeedItem
 } from "library/utils";
 import expStyles from 'styles/experienceStyles.js';
-import HeaderTab from 'library/header-tab.js'
+import HeaderTab from 'library/HeaderTab'
+import getUser from "services/UserService";
 
 const PEOPLE = [
   {img: 'https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/nayana6df00e.png'},
@@ -64,6 +65,12 @@ const CONTENT = 'Last night I hooked the desktop computer to the audio system, a
 export default class HomeScreen extends Component {
   static navigationOptions = {
     header: null
+  }
+
+  constructor(props) {
+    super(props);
+    console.log('Hi');
+    getUser('cedaus97');
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import styles from 'res/styles';
 import {CustomButton, Greeting, IconButton, InputText, TextButton} from "library/utils";
 
 export const BackTab = (props) => {
@@ -38,7 +39,7 @@ export const CrossTab = (props) => {
       paddingLeft: 20,
       paddingRight: 20
     }]}>
-      <Text style={{fontSize: 20, fontWeight: 'bold'}}>{title}</Text>
+      <Text style={[styles.h3, {fontWeight: 'bold'}]}>{title}</Text>
       <IconButton
         name="ios-close-circle"
         color="#ccc"

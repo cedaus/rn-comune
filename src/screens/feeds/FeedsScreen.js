@@ -1,16 +1,30 @@
 import React, {Component} from "react";
-import {View, Text, ScrollView} from 'react-native';
+import {ScrollView, Text, View, FlatList} from 'react-native';
 import {BackTab} from "library/tab";
 import styles from 'res/styles';
 import colors from 'res/colors';
 import {FeedItem, Label} from "library/utils";
+import getUserFeed from "services/FeedService";
 
 CONTENT = 'Last night I hooked the desktop computer to the audio system, and played an hour of Witcher 3 in glorious immersive surround-sound. Since playing Witcher is the only thing I physically use the desktop server for anymore I always leave the game running, paused, as I go about my day (or days, or weeks). '
 
 export default class FeedsScreen extends Component {
+  posts;
   static navigationOptions = {
-        header: null
-    }
+    header: null
+  };
+
+  constructor(props) {
+    super(props);
+    console.log('Hi');
+    this.posts = getUserFeed('cedaus97');
+    console.log(this.posts);
+  }
+
+  componentWillMount() {
+    this.setState({ showLoading: true});
+  }
+
   render() {
     return (
       <View style={[styles.container_full]}>
@@ -23,12 +37,13 @@ export default class FeedsScreen extends Component {
             <Label text='Work Opportunity'/>
           </ScrollView>
         </View>
-        <ScrollView>
-          <FeedItem name='Saksham Jain' imageUrl='https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/cedaus97.png'
-                    content={CONTENT} onPress={() => this.props.navigation.navigate('FeedPost')}/>
-          <FeedItem name='Harsh Gupta' imageUrl='https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/cedaus97.png'
-                    content={CONTENT} onPress={() => this.props.navigation.navigate('FeedPost')}/>
-        </ScrollView>
+        <FlatList
+          data={[1,2,3]}
+          renderItem={({item}) => <FeedItem name='Saksham Jain'
+                    imageUrl='https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/cedaus97.png'
+                    content={CONTENT} onPress={() => this.props.navigation.navigate('FeedPost')}/>}
+        >
+        </FlatList>
       </View>
     );
   }

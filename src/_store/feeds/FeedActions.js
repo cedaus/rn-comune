@@ -3,20 +3,20 @@ export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_POSTS_ERROR = 'FETCH_POSTS_ERROR';
 
 
-function fetchPostsPending() {
+export function fetchPostsPending() {
     return {
         type: FETCH_POSTS_PENDING
     }
 }
 
-function fetchPostsSuccess(products) {
+export function fetchPostsSuccess(posts) {
     return {
         type: FETCH_POSTS_SUCCESS,
-        products: products
+        payload: posts
     }
 }
 
-function fetchPostsError(error) {
+export function fetchPostsError(error) {
     return {
         type: FETCH_POSTS_ERROR,
         error: error

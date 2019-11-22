@@ -1,9 +1,8 @@
-import {combineReducers} from 'redux';
-import {FETCH_POSTS_PENDING, FETCH_POSTS_SUCCESS, FETCH_POSTS_ERROR} from './actions';
+import {FETCH_POSTS_PENDING, FETCH_POSTS_SUCCESS, FETCH_POSTS_ERROR} from 'feeds/FeedActions';
 
 const INITIAL_STATE = {
-  current: [],
-  post: [],
+  pending: false,
+  posts: [],
   error: null,
 };
 
@@ -18,7 +17,7 @@ export const feedReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         pending: false,
-        products: action.payload
+        posts: action.payload
       };
     case FETCH_POSTS_ERROR:
       return {
@@ -31,6 +30,6 @@ export const feedReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export const getPosts = state => state.products;
+export const getPosts = state => state.posts;
 export const getPostsPending = state => state.pending;
 export const getPostsError = state => state.error;

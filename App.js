@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import RootNavigator from "./src/main/RootNavigator";
 import {Provider} from 'react-redux';
-import {combineReducers, createStore} from 'redux';
-import {feedReducer} from "reducers/FeedReducer";
+import thunk from 'redux-thunk';
+import {createStore, applyMiddleware} from 'redux';
+import RootReducer from "./src/main/RootReducer";
+import RootNavigator from "./src/main/RootNavigator";
 
-const rootReducer = combineReducers({
-  posts: feedReducer,
-});
 
-const store = createStore(rootReducer);
+const middlewares = [thunk];
+
+const store = createStore(RootReducer, applyMiddleware(...middlewares));
 
 export default class App extends Component {
   render() {

@@ -17,7 +17,7 @@ import {
 } from "library/utils";
 import expStyles from 'styles/experienceStyles.js';
 import HeaderTab from 'library/HeaderTab'
-import getUser from "services/UserService";
+import getUser from "users/UserService";
 
 const PEOPLE = [
   {img: 'https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/nayana6df00e.png'},

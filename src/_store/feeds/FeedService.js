@@ -1,7 +1,7 @@
 const axios = require('axios');
-import {constructAll} from "../_helpers/base";
-import {fetchPostsError, fetchPostsPending, fetchPostsSuccess} from 'reducers/actions';
-import {PostModel} from 'models/FeedModel'
+import {constructAll} from "../../_helpers/base";
+import {fetchPostsError, fetchPostsPending, fetchPostsSuccess} from 'feeds/FeedActions';
+import {PostModel} from 'feeds/FeedModel'
 
 // export default function getUserFeed(username) {
 //   const USER_FEED_URL = 'https://commune-django.herokuapp.com/api/broadcast/feed';
@@ -20,6 +20,7 @@ import {PostModel} from 'models/FeedModel'
 
 
 function fetchUserPosts() {
+  const USER_FEED_URL = 'https://commune-django.herokuapp.com/api/broadcast/feed';
   return dispatch => {
     dispatch(fetchPostsPending());
     axios.get(`${USER_FEED_URL}/${username}/`).then(response => {
@@ -29,7 +30,6 @@ function fetchUserPosts() {
           throw(response.error);
       }
       dispatch(fetchPostsSuccess(data));
-      return response.products;
     })
     .catch(error => {
       console.log('Printing Error');

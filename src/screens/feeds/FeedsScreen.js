@@ -7,8 +7,9 @@ import {BackTab} from "library/tab";
 import styles from 'res/styles';
 import colors from 'res/colors';
 import {FeedItem, Label} from "library/utils";
-import fetchUserPosts from "services/FeedService";
-import {getPosts, getPostsError, getPostsPending} from "reducers/FeedReducer";
+import fetchUserPosts from "feeds/FeedService";
+import {getPosts, getPostsError, getPostsPending} from "feeds/FeedReducer";
+import {fetchPostsSuccess, fetchPostsError, fetchPostsPending} from "feeds/FeedActions";
 
 CONTENT = 'Last night I hooked the desktop computer to the audio system, and played an hour of Witcher 3 in glorious immersive surround-sound. Since playing Witcher is the only thing I physically use the desktop server for anymore I always leave the game running, paused, as I go about my day (or days, or weeks). '
 
@@ -24,8 +25,7 @@ class FeedsScreen extends Component {
   }
 
   componentWillMount() {
-    const {fetchPosts} = this.props;
-    fetchPosts();
+    this.props.callService();
   }
 
   shouldComponentRender() {
@@ -70,9 +70,9 @@ const mapStateToProps = state => ({
   pending: getPostsPending(state)
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchPosts: fetchUserPosts
-}, dispatch);
+const mapDispatchToProps = dispatch => ({
+  callService: () => dispatch(fetchUserPosts())
+});
 
 export default connect(
   mapStateToProps,

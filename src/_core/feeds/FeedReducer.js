@@ -14,6 +14,7 @@ export const feedReducer = (state = INITIAL_STATE, action) => {
         pending: true
       };
     case FETCH_POSTS_SUCCESS:
+      console.log('H6');
       return {
         ...state,
         pending: false,
@@ -30,6 +31,6 @@ export const feedReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export const getPosts = state => state.posts;
-export const getPostsPending = state => state.pending;
-export const getPostsError = state => state.error;
+export const getPosts = state => state.feedReducer.posts;
+export const getPostsPending = state => state.feedReducer.pending;
+export const getPostsError = state => state.feedReducer.error;

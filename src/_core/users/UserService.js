@@ -1,11 +1,10 @@
 const axios = require('axios');
 
-
-
-export default function getPublicUser(username) {
+export function getPublicUser(username) {
   const USER_PUBLIC_URL = 'https://commune-django.herokuapp.com/api/user/profile/public';
   axios.get(`${USER_PUBLIC_URL}/${username}`).then(function (response) {
-    console.log(response['data']['data']);
+    data = console.log(response['data']['data']['user']);
+    return data;
   })
   .catch(function (error) {
     console.log('Printing Error');

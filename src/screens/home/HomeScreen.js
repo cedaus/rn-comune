@@ -17,7 +17,7 @@ import {
 } from "library/utils";
 import expStyles from 'styles/experienceStyles.js';
 import HeaderTab from 'library/HeaderTab'
-import getUser from "users/UserService";
+import {getPublicUser} from "users/UserService";
 
 const PEOPLE = [
   {img: 'https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/nayana6df00e.png'},
@@ -69,8 +69,7 @@ export default class HomeScreen extends Component {
 
   constructor(props) {
     super(props);
-    console.log('Hi');
-    getUser('cedaus97');
+    getPublicUser('cedaus97');
   }
 
   render() {

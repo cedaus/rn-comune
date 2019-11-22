@@ -4,9 +4,29 @@ import colors from 'res/colors';
 import strings from 'res/strings';
 import styles from 'res/styles';
 import {ArrowButton, CustomButton, Hero, InputText, TextButton} from "library/utils";
+import {connect} from "react-redux";
+import {authLogin} from "auth/AuthService";
 
 export default class LoginScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.shouldComponentRender = this.shouldComponentRender.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.callService();
+  }
+
+  shouldComponentRender() {
+    const {pending} = this.props;
+    if (pending === true) return false;
+    // more tests
+    return true;
+  }
+
   render() {
+    const {isLoggedIn, user, token, pending} = this.props;
+
     return (
       <View style={[styles.container_full]}>
         <View style={{height: 200, backgroundColor: colors.brand}}>
@@ -30,3 +50,22 @@ export default class LoginScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.isLoggedIn,
+    user: state.user,
+    token: state.token,
+    pending: state.pending,
+  };
+};
+
+
+const mapDispatchToProps = dispatch => ({
+  callService: () => dispatch(authLogin())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginScreen);

@@ -450,7 +450,7 @@ export const FeedItem = (props) => {
           </View>
           <IconButton
             name="ios-close-circle"
-            color="#ccc"
+            color={colors.iconLightColor}
             size={30}
           />
         </View>

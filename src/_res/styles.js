@@ -15,13 +15,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
-  red: {
-    color: 'red',
-  },
-  btn: {
-    height: 50,
-    color:"#1c1"
-  },
   h1: {color: colors.h1, fontSize: 24},
   h2: {color: colors.h2, fontSize: 22},
   h3: {color: colors.h3, fontSize: 20},
@@ -32,9 +25,9 @@ const styles = StyleSheet.create({
   h8: {color: colors.h8, fontSize: 10},
   p: {color: colors.p, fontSize: 16},
   inputStyle1: {height: 55, borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},
-  inputStyle2: {height: 55, backgroundColor: '#F5F6FC', borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},
+  inputStyle2: {height: 55, backgroundColor: colors.inputBgColor, borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},
   otpStyle1: {height: 55, width: 55, borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},
-  otpStyle2: {height: 55, width: 55, backgroundColor: '#F5F6FC', borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},
+  otpStyle2: {height: 55, width: 55, backgroundColor: colors.inputBgColor, borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},
   profileContainer: {
     display: 'flex',
     flexDirection: 'column',

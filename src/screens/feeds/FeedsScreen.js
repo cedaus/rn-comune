@@ -37,7 +37,7 @@ class FeedsScreen extends Component {
 
   render() {
     const {posts, error, pending} = this.props;
-
+    console.log(this.props.posts);
     if (!this.shouldComponentRender()) return <Text>Hello</Text>;
 
     return (
@@ -52,7 +52,7 @@ class FeedsScreen extends Component {
           </ScrollView>
         </View>
         <FlatList
-          data={posts}
+          data={this.props.posts}
           renderItem={({item}) => <FeedItem name='Saksham Jain'
                                             imageUrl='https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/cedaus97.png'
                                             content={item.content}

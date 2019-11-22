@@ -12,7 +12,7 @@ const loggerMiddleware = createLogger();
 
 const store = createStore(RootReducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
 store.dispatch(fetchPostsPending());
-store.dispatch(fetchUserPosts()).then(() => console.log(store.getState()));
+// store.dispatch(fetchUserPosts()).then(() => console.log(store.getState()));
 
 export default class App extends Component {
   render() {

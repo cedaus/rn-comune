@@ -23,9 +23,8 @@ function fetchUserPosts() {
   const USER_FEED_URL = 'https://commune-django.herokuapp.com/api/broadcast/feed';
   return dispatch => {
     dispatch(fetchPostsPending());
-    axios.get(`${USER_FEED_URL}/${username}/`).then(response => {
+    axios.get(`${USER_FEED_URL}/cedaus97/`).then(response => {
       const data = constructAll(response['data']['broadcasts'], PostModel);
-      console.log(data);
       if (response.error) {
           throw(response.error);
       }
@@ -42,4 +41,4 @@ function fetchUserPosts() {
   }
 }
 
-export default fetchUserPosts();
+export default fetchUserPosts;

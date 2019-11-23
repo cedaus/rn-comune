@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     width: 120,
     borderRadius: 60,
     overflow: "hidden",
-    borderWidth: 3,
-    borderColor: "red"
+    borderWidth: 2,
+    borderColor: colors.borderColorLight
   },
   settingsItem: {
     display: 'flex',

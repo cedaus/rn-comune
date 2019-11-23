@@ -398,7 +398,7 @@ export const Search = (props) => {
 };
 
 export const Hero = (props) => {
-  const {name, location, imageUrl, onPress} = props;
+  const {user, onPress} = props;
   return (
     <View style={{
       height: 120,
@@ -411,14 +411,14 @@ export const Hero = (props) => {
       paddingRight: 20
     }}>
       <View style={{flex: 0.8}}>
-        <Text style={{fontSize: 24, color: '#FFF', fontWeight: 'bold'}}>{strings.home.heading}</Text>
-        <Text style={{fontSize: 14, color: colors.textLight2}}>You are in HSR Layout, Bengaluru</Text>
+        <Text style={{fontSize: 24, color: '#FFF', fontWeight: 'bold'}}>Hi, {user.name}</Text>
+        <Text style={{fontSize: 14, color: colors.textLight2}}>You are in {user.location}</Text>
       </View>
       <View style={{flex: 0.2}}>
         <TouchableHighlight onPress={onPress}>
           <Image
             style={{width: 60, height: 60, borderRadius: 30}}
-            source={{uri: imageUrl}}
+            source={{uri: user.image}}
           />
         </TouchableHighlight>
       </View>

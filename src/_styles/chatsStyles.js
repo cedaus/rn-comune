@@ -18,7 +18,7 @@ const chatsStyles = StyleSheet.create({
     borderRadius: 2,
     overflow: "hidden",
     borderWidth: 1,
-    borderColor: "red"
+    borderColor: colors.borderColorLight
   },
   chatBody: {
     marginLeft: 10

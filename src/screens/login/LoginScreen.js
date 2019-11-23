@@ -6,6 +6,7 @@ import styles from 'res/styles';
 import {ArrowButton, CustomButton, Hero, InputText, TextButton} from "library/utils";
 import {connect} from "react-redux";
 import {authLogin} from "auth/AuthService";
+import {getIsLoggedIn} from "auth/AuthReducer";
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const {isLoggedIn, user, token, pending} = this.props;
+    const {isLoggedIn} = this.props;
     const navigation = this.props.navigation;
 
     return (
@@ -55,10 +56,7 @@ class LoginScreen extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.isLoggedIn,
-    user: state.user,
-    token: state.token,
-    pending: state.pending,
+    isLoggedIn: getIsLoggedIn(state),
   };
 };
 

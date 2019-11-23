@@ -23,3 +23,7 @@ export const authReducer = (state = INITIAL_STATE, action) => {
       return state
   }
 };
+
+export const getIsLoggedIn = state => state.authReducer.isLoggedIn;
+export const getUser = state => state.authReducer.user;
+export const getToken = state => state.authReducer.token;

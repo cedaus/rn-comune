@@ -17,7 +17,8 @@ import {
 } from "library/utils";
 import expStyles from 'styles/experienceStyles.js';
 import HeaderTab from 'library/HeaderTab'
-import {fetchUser} from "users/UserService";
+import {getIsLoggedIn, getUser} from "auth/AuthReducer";
+import {connect} from "react-redux";
 
 const PEOPLE = [
   {img: 'https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/nayana6df00e.png'},
@@ -62,23 +63,26 @@ const DATA = [
 const CONTENT = 'Last night I hooked the desktop computer to the audio system, and played an hour of Witcher 3 in glorious immersive surround-sound. Since playing Witcher is the only thing I physically use the desktop server for anymore I always leave the game running, paused, as I go about my day (or days, or weeks). '
 
 
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
   static navigationOptions = {
     header: null
-  }
+  };
 
   constructor(props) {
     super(props);
-    fetchUser('cedaus97');
   }
 
   render() {
+    const {isLoggedIn, user} = this.props;
+
     return (
       <View style={[styles.container_full]}>
         <ScrollView>
           <HeaderTab/>
-          <Hero imageUrl='https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/cedaus97.png'
-                onPress={() => this.props.navigation.navigate('Settings')}/>
+          <Hero
+            user={user}
+            onPress={() => this.props.navigation.navigate('Settings')}
+          />
           <View style={expStyles.expRow}>
             <View style={{display: 'flex', flexDirection: 'row', marginBottom: 15, alignItems: 'center'}}>
               <Image style={{'width': 20, 'height': 20, marginRight: 5}} source={require('../../../assets/hosts.png')}
@@ -157,3 +161,14 @@ export default class HomeScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: getIsLoggedIn(state),
+    user: getUser(state)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+)(HomeScreen);

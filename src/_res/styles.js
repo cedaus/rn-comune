@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   h7: {color: colors.h7, fontSize: 12},
   h8: {color: colors.h8, fontSize: 10},
   p: {color: colors.p, fontSize: 16},
+  pLight: {color: colors.pLight, fontSize: 15},
   inputStyle1: {height: 55, borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},
   inputStyle2: {height: 55, backgroundColor: colors.inputBgColor, borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},
   otpStyle1: {height: 55, width: 55, borderColor: colors.borderColorLight, borderWidth: 1, borderRadius:2, paddingLeft: 20, paddingRight: 20},

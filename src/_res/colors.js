@@ -13,6 +13,7 @@ const colors = {
   h7: '#CACBD0',
   h8: '#B5BDC0',
   p: '#68696D',
+  pLight: '#B5BDC0',
   button: '#036675',
   borderColorLight: '#E9EBED',
   backgroundColor1: '#E4E6EA',

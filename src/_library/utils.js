@@ -279,21 +279,21 @@ export const Label = (props) => {
 //
 
 export const ChatRow = (props) => {
-  const {name, datetime, lastMessage, onPress} = props;
+  const {chat, onPress} = props;
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[chats_styles.chatRow]}>
         <Image
-          source={{uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png'}}
+          source={{uri: chat.participant.image}}
           style={[chats_styles.chatImage]}
         />
         <View style={[chats_styles.chatBody]}>
-          <View>
-            <Text>{name}</Text>
-            <Text>{datetime}</Text>
+          <View styles={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10}}>
+            <Text style={[styles.h5, {fontWeight: 'bold'}]}>{chat.participant.name}</Text>
+            {/*<Text>{chat.lastMessage.createdAt}</Text>*/}
           </View>
           <View>
-            <Text>{lastMessage}</Text>
+            <Text style={[styles.pLight]} numberOfLines={2}>{chat.lastMessage.text}</Text>
           </View>
         </View>
       </View>

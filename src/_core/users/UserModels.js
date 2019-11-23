@@ -1,3 +1,21 @@
+export class UserMiniModel {
+  id;
+  username;
+  firstName;
+  lastName;
+  name;
+
+  constructor(data) {
+    this.id = data['id'];
+    this.username = data['username'];
+    this.firstName = data['first_name'];
+    this.lastName = data['last_name'];
+    this.name = data['name'];
+    this.image = data['profile_image'];
+  }
+}
+
+
 export class UserModel {
   id;
   username;

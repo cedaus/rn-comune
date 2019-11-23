@@ -13,15 +13,17 @@ const chatsStyles = StyleSheet.create({
     borderColor: colors.borderColorLight
   },
   chatImage: {
-    height: 60,
-    width: 60,
-    borderRadius: 2,
+    height: 50,
+    width: 50,
+    borderRadius: 4,
     overflow: "hidden",
     borderWidth: 1,
-    borderColor: colors.borderColorLight
+    marginRight: 10
   },
   chatBody: {
-    marginLeft: 10
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: "wrap"
   }
 });
 

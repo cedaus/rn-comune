@@ -6,8 +6,8 @@ import colors from 'res/colors';
 import {ChatRow, Search} from "library/utils";
 import {connect} from "react-redux";
 import {fetchChatList} from "chats/ChatActions";
-import {getChatList, getChatListCount} from "chats/ChatReducer";
-import {apiChatList} from "chats/ChatService";
+import {getChatList, getChatCurrentCount, getChatTotalCount, getIsPaginating} from "chats/ChatReducer";
+import {apiChatList, apiMoreChatList} from "chats/ChatService";
 import {getToken} from "auth/AuthReducer";
 
 class ChatsScreen extends Component {
@@ -15,8 +15,18 @@ class ChatsScreen extends Component {
     header: null
   };
 
+  constructor(props) {
+    super(props);
+    this.paginateChat = this.paginateChat.bind(this);
+  }
+
   componentWillMount() {
     this.props.callService(this.props.token);
+  }
+
+  paginateChat() {
+    if (this.props.paginating || this.props.totalCount === this.props.currentCount) return null;
+    this.props.loadMoreChat(this.props.currentCount, this.props.token);
   }
 
   render() {
@@ -35,6 +45,8 @@ class ChatsScreen extends Component {
         <FlatList
           data={chats}
           renderItem={({item}) => <ChatRow chat={item}/>}
+          onEndReached={this.paginateChat}
+          onEndThreshold={10}
         >
         </FlatList>
       </View>
@@ -45,13 +57,16 @@ class ChatsScreen extends Component {
 const mapStateToProps = state => {
   return {
     chats: getChatList(state),
-    count: getChatListCount(state),
+    currentCount: getChatCurrentCount(state),
+    totalCount: getChatTotalCount(state),
     token: getToken(state),
+    paginating: getIsPaginating(state)
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  callService: (token) => dispatch(apiChatList(token))
+  callService: (token) => dispatch(apiChatList(token)),
+  loadMoreChat: (offset, token) => dispatch(apiMoreChatList(offset, token))
 });
 
 export default connect(

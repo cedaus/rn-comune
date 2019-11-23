@@ -10,7 +10,7 @@ import {fetchPostsPending} from "feeds/FeedActions";
 
 const loggerMiddleware = createLogger();
 
-const store = createStore(RootReducer, applyMiddleware(thunkMiddleware, loggerMiddleware));
+const store = createStore(RootReducer, applyMiddleware(thunkMiddleware));
 store.dispatch(fetchPostsPending());
 // store.dispatch(fetchUserPosts()).then(() => console.log(store.getState()));
 

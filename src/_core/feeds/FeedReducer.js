@@ -1,4 +1,5 @@
-import {FETCH_POSTS_PENDING, FETCH_POSTS_SUCCESS, FETCH_POSTS_ERROR} from 'feeds/FeedActions';
+import {FETCH_POSTS_PENDING, FETCH_POSTS_SUCCESS, FETCH_POSTS_ERROR, REMOVE_POST} from 'feeds/FeedActions';
+import {removeFromList} from "helpers/base";
 
 const INITIAL_STATE = {
   pending: false,
@@ -25,6 +26,11 @@ export const feedReducer = (state = INITIAL_STATE, action) => {
         ...state,
         pending: false,
         error: action.error
+      };
+    case REMOVE_POST:
+      return {
+        ...state,
+        posts: removeFromList(state.posts, id, action.postID)
       };
     default:
       return state

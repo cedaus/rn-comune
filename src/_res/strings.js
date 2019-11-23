@@ -4,7 +4,7 @@ const strings = {
   },
   login: {
     heading: 'Nice to see you',
-    button: 'Login'
+    button: 'Next'
   },
   home: {
     heading: 'Comune',

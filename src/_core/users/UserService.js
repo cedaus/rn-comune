@@ -2,7 +2,7 @@ import {fetchUserSuccess, fetchUserPending, fetchUserError} from "users/UserActi
 const axios = require('axios');
 
 
-function fetchUser(username) {
+export function fetchUser(username) {
   const USER_PUBLIC_URL = 'https://commune-django.herokuapp.com/api/user/profile/public';
   return dispatch => {
     dispatch(fetchUserPending());
@@ -23,5 +23,3 @@ function fetchUser(username) {
     });
   }
 }
-
-export default fetchUser;

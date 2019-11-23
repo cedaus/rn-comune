@@ -7,14 +7,15 @@ import {ArrowButton, CustomButton, Hero, InputText, TextButton} from "library/ut
 import {connect} from "react-redux";
 import {authLogin} from "auth/AuthService";
 
-export default class LoginScreen extends Component {
+class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.shouldComponentRender = this.shouldComponentRender.bind(this);
   }
 
   componentWillMount() {
-    this.props.callService();
+    // this.props.callService('9810626853', 'qwerty7241');
+    // this.props.navigation.navigate('Home')
   }
 
   shouldComponentRender() {
@@ -26,6 +27,7 @@ export default class LoginScreen extends Component {
 
   render() {
     const {isLoggedIn, user, token, pending} = this.props;
+    const navigation = this.props.navigation;
 
     return (
       <View style={[styles.container_full]}>
@@ -43,7 +45,7 @@ export default class LoginScreen extends Component {
           <View style={{marginBottom: 40}}>
             <InputText style={styles.inputStyle2} placeholder='Put your phone'/>
           </View>
-          <ArrowButton title={strings.login.button} onPress={() => this.props.navigation.navigate('Home')}/>
+          <ArrowButton title={strings.login.button} onPress={() => this.props.callService('9810626853', 'qwerty7241', navigation)}/>
           <Text style={[styles.h6, {marginTop: 30}]}>Please review our T&C</Text>
         </View>
       </View>
@@ -62,7 +64,7 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = dispatch => ({
-  callService: () => dispatch(authLogin())
+  callService: (phone, password, navigation) => dispatch(authLogin(phone, password, navigation))
 });
 
 export default connect(

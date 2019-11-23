@@ -1,12 +1,12 @@
 import {fetchUserSuccess, fetchUserPending, fetchUserError} from "users/UserActions";
+import {PUBLIC_USER_URL} from "../../main/RootAPI";
 const axios = require('axios');
 
 
 export function fetchUser(username) {
-  const USER_PUBLIC_URL = 'https://commune-django.herokuapp.com/api/user/profile/public';
   return dispatch => {
     dispatch(fetchUserPending());
-    axios.get(`${USER_PUBLIC_URL}/${username}/`).then(response => {
+    axios.get(`${PUBLIC_USER_URL}/${username}/`).then(response => {
       const data = console.log(response['data']['data']['user']);
       if (response.error) {
           throw(response.error);

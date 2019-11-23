@@ -13,6 +13,15 @@ export class UserModel {
   location;
   birthDate;
   authorised;
+  facebookLink;
+  linkedinLink;
+  twitterLink;
+  githubLink;
+  behanceLink;
+  dribbleLink;
+  instagramLink;
+  websiteLink;
+  resumeLink;
   allowPhonePublic;
   allowEmailPublic;
 

@@ -3,8 +3,6 @@ import {Image, Text, TextInput, TouchableHighlight, TouchableOpacity, View} from
 import Icon from "react-native-vector-icons/Ionicons";
 import styles from 'res/styles';
 import colors from 'res/colors';
-import strings from 'res/strings';
-import chats_styles from 'styles/chatsStyles.js'
 
 export const InputText = (props) => {
   const {style, placeholder} = props;
@@ -282,17 +280,41 @@ export const ChatRow = (props) => {
   const {chat, onPress} = props;
   return (
     <TouchableOpacity onPress={onPress}>
-      <View style={[chats_styles.chatRow]}>
+      <View style={{
+        display: 'flex',
+        flexDirection: 'row',
+        paddingTop: 15,
+        paddingBottom: 15,
+        paddingLeft: 20,
+        paddingRight: 20,
+        borderBottomWidth: 1,
+        borderColor: colors.borderColorLight
+      }}>
         <Image
           source={{uri: chat.participant.image}}
-          style={[chats_styles.chatImage]}
+          style={{
+            height: 50,
+            width: 50,
+            borderRadius: 4,
+            overflow: "hidden",
+            borderWidth: 1,
+            marginRight: 10
+          }}
         />
-        <View style={[chats_styles.chatBody]}>
-          <View styles={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10}}>
+        <View style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+          <View style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
             <Text style={[styles.h5, {fontWeight: 'bold'}]}>{chat.participant.name}</Text>
-            {/*<Text>{chat.lastMessage.createdAt}</Text>*/}
+            <Text style={styles.h7}>Mon</Text>
           </View>
-          <View>
+          <View style={{display: 'flex', flexWrap: 'wrap'}}>
             <Text style={[styles.pLight]} numberOfLines={2}>{chat.lastMessage.text}</Text>
           </View>
         </View>

@@ -1,5 +1,5 @@
 export function constructAll(list, model) {
-  console.log(list);
+  console.log('vivi', list);
   return list.map((item) => {
     return new model(item);
   });

@@ -3,18 +3,20 @@ import {Image, Text, TextInput, View} from 'react-native';
 import {BackTab, NormalTab} from "library/tab";
 import styles from 'res/styles';
 import colors from 'res/colors';
-import {FeedItem, Label} from "library/utils";
+import {FeedItem, Label, IconButton2} from "library/utils";
 import KeyboardShift from "library/KeyboardShift";
+import {connect} from "react-redux";
+import {getUser} from "auth/AuthReducer";
 
 CONTENT = 'Last night I hooked the desktop computer to the audio system, and played an hour of Witcher 3 in glorious immersive surround-sound. Since playing Witcher is the only thing I physically use the desktop server for anymore I always leave the game running, paused, as I go about my day (or days, or weeks). '
 IMAGE = 'https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/cedaus97.png'
 NAME = 'Saksham Jain'
 
-export default class FeedPostScreen extends Component {
+class FeedPostScreen extends Component {
 
   render() {
     return (
-      <View style={[styles.container_full, {backgroundColor: colors.backgroundColor1}]}>
+      <View style={[styles.container_full, {backgroundColor: colors.backgroundColorDark}]}>
         <View style={{
           backgroundColor: '#FFF',
           paddingTop: 20,
@@ -44,26 +46,24 @@ export default class FeedPostScreen extends Component {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            height: 50,
+            height: 70,
+            width: '100%',
             backgroundColor: '#FFF',
             padding: 10
           }}>
-            <Image style={{width: 30, height: 30, borderRadius: 15, marginRight: 10}} source={{uri: IMAGE}}/>
+            <Image style={{width: 30, height: 30, borderRadius: 15}} source={{uri: this.props.user.image}}/>
             <TextInput
-              style={{
-                width: '90%',
+              style={[styles.inputStyle2, {
+                flex: 1,
                 minHeight: 40,
-                backgroundColor: '#FFF',
-                borderColor: colors.borderColorLight,
-                borderWidth: 1,
-                borderRadius: 3,
-                paddingLeft: 20,
-                paddingRight: 20
-              }}
-              placeholder='Your comment'
+                marginLeft: 10,
+                marginRight: 10
+              }]}
+              placeholder='Type here...'
               multiline={true}
               numberOfLines={4}
             />
+            <IconButton2 boxColor={colors.brand} boxSize={40} iconSize={30} iconColor='#FFF' name='ios-add'/>
           </View>
         </KeyboardShift>
 
@@ -71,3 +71,13 @@ export default class FeedPostScreen extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: getUser(state)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+)(FeedPostScreen);

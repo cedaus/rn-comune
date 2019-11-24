@@ -9,6 +9,7 @@ import {fetchChatList} from "chats/ChatActions";
 import {getChatList, getChatCurrentCount, getChatTotalCount, getIsPaginating} from "chats/ChatReducer";
 import {apiChatList, apiMoreChatList} from "chats/ChatService";
 import {getToken} from "auth/AuthReducer";
+import {selectChatStart} from "chats/ChatActions";
 
 class ChatsScreen extends Component {
   static navigationOptions = {
@@ -18,6 +19,7 @@ class ChatsScreen extends Component {
   constructor(props) {
     super(props);
     this.paginateChat = this.paginateChat.bind(this);
+    this.selectChat = this.selectChat.bind(this);
   }
 
   componentWillMount() {
@@ -26,7 +28,12 @@ class ChatsScreen extends Component {
 
   paginateChat() {
     if (this.props.paginating || this.props.totalCount === this.props.currentCount) return null;
-    this.props.loadMoreChat(this.props.currentCount, this.props.token);
+    this.props.onPaginateChat(this.props.currentCount, this.props.token);
+  }
+
+  selectChat(chatID) {
+    this.props.onSelectChat(chatID);
+    this.props.navigation.navigate('ChatMessages');
   }
 
   render() {
@@ -44,7 +51,7 @@ class ChatsScreen extends Component {
         </View>
         <FlatList
           data={chats}
-          renderItem={({item}) => <ChatRow chat={item}/>}
+          renderItem={({item}) => <ChatRow chat={item} onPress={() => this.selectChat(item.id)}/>}
           onEndReached={this.paginateChat}
           onEndThreshold={10}
         >
@@ -66,7 +73,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   callService: (token) => dispatch(apiChatList(token)),
-  loadMoreChat: (offset, token) => dispatch(apiMoreChatList(offset, token))
+  onPaginateChat: (offset, token) => dispatch(apiMoreChatList(offset, token)),
+  onSelectChat: (chatID) => dispatch(selectChatStart(chatID))
 });
 
 export default connect(

@@ -4,7 +4,7 @@ import {BackTab} from "library/tab";
 import styles from 'res/styles';
 import colors from 'res/colors';
 import expStyles from 'styles/experienceStyles.js';
-import {ExpItem2, IconButton2, IconButton3, Search, SearchContainer} from "library/utils";
+import {ExpItem2, Search, SearchContainer, TextIconButton3} from "library/utils";
 
 
 const DATA = [
@@ -49,9 +49,9 @@ export default class EventsScreen extends Component {
           <Text style={{fontSize: 20, fontWeight: 'bold', color: '#FFF', marginBottom: 20}}>Going Out</Text>
           <Search/>
           <View style={expStyles.expTabs}>
-            <IconButton3 name='Events' route={require('../../../assets/events.png')}/>
-            <IconButton3 name='Spaces' route={require('../../../assets/spaces.png')}/>
-            <IconButton3 name='Hosts' route={require('../../../assets/hosts.png')}/>
+            <TextIconButton3 name='Events' route={require('../../../assets/events.png')}/>
+            <TextIconButton3 name='Spaces' route={require('../../../assets/spaces.png')}/>
+            <TextIconButton3 name='Hosts' route={require('../../../assets/hosts.png')}/>
           </View>
         </View>
         <ScrollView>

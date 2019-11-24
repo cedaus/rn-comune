@@ -91,20 +91,7 @@ export const TextIconButton = (props) => {
   )
 };
 
-export const IconButton = (props) => {
-  const {name, color, size, onPress} = props;
-  return (
-    <TouchableOpacity onPress={onPress} activeOpacity={.5}>
-      <Icon
-        name={name}
-        color={color}
-        size={size}
-      />
-    </TouchableOpacity>
-  )
-};
-
-export const IconButton2 = (props) => {
+export const TextIconButton2 = (props) => {
   // Square
   const {name, route, onPress} = props;
   return (
@@ -125,9 +112,9 @@ export const IconButton2 = (props) => {
       </View>
     </TouchableOpacity>
   )
-}
+};
 
-export const IconButton3 = (props) => {
+export const TextIconButton3 = (props) => {
   // Reactagle
   const {name, route, onPress} = props;
   return (
@@ -151,7 +138,36 @@ export const IconButton3 = (props) => {
       </View>
     </TouchableOpacity>
   )
-}
+};
+
+//
+export const IconButton = (props) => {
+  const {name, color, size, onPress} = props;
+  return (
+    <TouchableOpacity onPress={onPress} activeOpacity={.5}>
+      <Icon
+        name={name}
+        color={color}
+        size={size}
+      />
+    </TouchableOpacity>
+  )
+};
+
+export const IconButton2 = (props) => {
+  const {name, iconColor, iconSize, boxSize, boxColor, onPress} = props;
+  return (
+    <TouchableOpacity onPress={onPress} activeOpacity={.5}>
+      <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: boxSize, height: boxSize, backgroundColor: boxColor, borderRadius: 3}}>
+        <Icon
+          name={name}
+          color={iconColor}
+          size={iconSize}
+        />
+      </View>
+    </TouchableOpacity>
+  )
+};
 
 export const IconButton4 = (props) => {
   // Circular
@@ -269,7 +285,7 @@ export const Label = (props) => {
   const {text, mR, onPress} = props;
   return (
     <View style={{padding: 8, borderRadius: 20, backgroundColor: '#FFF', marginRight: mR}}>
-      <Text>{text}</Text>
+      <Text style={styles.h6}>{text}</Text>
     </View>
   )
 };
@@ -320,6 +336,15 @@ export const ChatRow = (props) => {
         </View>
       </View>
     </TouchableOpacity>
+  )
+};
+
+export const ChatBubble = (props) => {
+  const {text} = props;
+  return(
+    <View style={{width: '85%', backgroundColor: '#F9F9F9', padding: 15, marginBottom: 20, borderRadius: 4}}>
+      <Text>{text}</Text>
+    </View>
   )
 };
 

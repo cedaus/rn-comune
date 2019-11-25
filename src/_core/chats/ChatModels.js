@@ -31,8 +31,7 @@ export class ChatModel {
   }
   setMessages(messages) {
     if (messages) {
-
-      this.messages = constructAll(messages, Message);
+      this.messages = constructAll(messages.reverse(), Message);
     }
   }
   setLastMessage(lastMessage) {
@@ -47,14 +46,23 @@ export class Message {
   chatID;
   messageNumber;
   text;
+  type;
   attachedURL;
   attachedFile;
+  fromUser;
   sender;
   createdAt;
   constructor(data) {
-    console.log(data);
     this.messageNumber = data['message_number'];
     this.text = data['text'];
+    this.type = data['type'];
     this.createdAt = data['created'];
+    this.fromUser = data['from_user'];
+    this.setSender(data['sender']);
+  }
+  setSender(sender) {
+    if (sender) {
+      this.sender = new UserMiniModel(sender);
+    }
   }
 }

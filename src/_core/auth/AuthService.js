@@ -13,7 +13,7 @@ export function authLogin(phone, password, navigation) {
   return dispatch => {
     axios.post(`${PHONE_AUTH_URL}`, params).then(response => {
       const data = response['data']['data'];
-      const user = new UserModel({'name': 'Saksham Jain', 'profile_image': 'https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/cedaus97.png', 'location': 'Bengaluru', 'email': 'cedaus97@gmail.com', 'sex': 'Male'});
+      const user = new UserModel({'id': 2, 'name': 'Saksham Jain', 'profile_image': 'https://s3.ap-south-1.amazonaws.com/cmn-user-profile-image/cedaus97.png', 'location': 'Bengaluru', 'email': 'cedaus97@gmail.com', 'sex': 'Male'});
       const token = data['token'];
       if (response.error) {
         throw(response.error);

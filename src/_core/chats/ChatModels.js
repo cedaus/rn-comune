@@ -31,17 +31,20 @@ export class ChatModel {
   }
   setMessages(messages) {
     if (messages) {
-      this.messages = constructAll(messages.reverse(), Message);
+      this.messages = constructAll(messages.reverse(), MessageModel);
     }
   }
   setLastMessage(lastMessage) {
     if (lastMessage) {
-      this.lastMessage = new Message(lastMessage);
+      this.lastMessage = new MessageModel(lastMessage);
     }
+  }
+  paginateMessages(messages) {
+    this.messages = messages.concat(this.messages);
   }
 }
 
-export class Message {
+export class MessageModel {
   id;
   chatID;
   messageNumber;

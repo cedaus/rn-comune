@@ -3,7 +3,8 @@ export const PAGINATING_CHAT_LIST_START = 'PAGINATING_CHAT_LIST_START';
 export const PAGINATING_CHAT_LIST_DONE = 'PAGINATING_CHAT_LIST_DONE';
 export const SELECT_CHAT_START = 'SELECT_CHAT_START';
 export const SELECT_CHAT_DONE = 'SELECT_CHAT_DONE';
-
+export const PAGINATING_CHAT_START = 'PAGINATING_CHAT_START';
+export const PAGINATING_CHAT_DONE = 'PAGINATING_CHAT_DONE';
 
 export function fetchChatList(chats, count, totalCount) {
   return {
@@ -40,4 +41,17 @@ export function selectChatDone(chat) {
     type: SELECT_CHAT_DONE,
     chat: chat
   };
+}
+
+export function paginatingChatStart() {
+  return {
+    type: PAGINATING_CHAT_START,
+  }
+}
+
+export function paginatingChatDone(messages) {
+  return {
+    type: PAGINATING_CHAT_DONE,
+    messages: messages
+  }
 }
